@@ -1,0 +1,36 @@
+services:
+  nestjs:
+    image: node:18.18.2
+    restart: always
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    ports:
+      - 3000:3000
+    volumes:
+      - ../:/workspace
+      - /workspace/node_modules/
+      - /workspace/dist/
+    environment:
+      - TZ=Asia/Seoul
+      - LC_ALL:en_US.UTF-8
+    command: sleep infinity
+
+  mysql:
+    image: mysql:8.4.0
+    restart: always
+    environment:
+      - MYSQL_HOST=localhost
+      - MYSQL_PORT=3306
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE="fliption_auth"
+      - MYSQL_USER="fliption"
+      - MYSQL_PASSWORD="fliption"
+      - TZ=Asia/Seoul
+    command:
+      - --init_connect="SET collation_connection = utf8mb4_unicode_ci"
+      - --init_connect="SET NAMES utf8mb4"
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --max_connections=500
