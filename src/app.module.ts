@@ -9,14 +9,16 @@ import { ConfigModule } from '@nestjs/config';
 import { validate } from './common/env.validator';
 
 import * as path from 'path';
+import { DatabaseModule } from './common/database/database.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true,
+      isGlobal: true, // 전역적으로 환경변수를 불러올 수 있게 설정 (ex. process.env)
       validate,
       envFilePath: path.resolve(`${__dirname}/../.env.local`),
     }),
+    DatabaseModule,
     UserModule,
     AuthModule,
     CryptoModule,
