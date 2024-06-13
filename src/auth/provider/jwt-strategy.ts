@@ -2,20 +2,19 @@ import { Strategy, ExtractJwt } from 'passport-jwt';
 import { PassportStrategy } from '@nestjs/passport';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { AuthService } from '../service/auth.service';
-import { TokenBlacklist } from 'src/user/entities/tokenBlacklist.entity';
+import { Expiry } from 'src/user/entities/expiry.entity';
 import { Repository } from 'typeorm';
 import { CryptoManager } from 'src/crypto/provider/crypto-manager';
 import { ConfigService } from '@nestjs/config';
 import { EnvKey } from 'src/common/env.validator';
 
 @Injectable()
-// AUthGuard('JWT-1')로 상속받은 요소와 결합됨
 export class JwtStrategy extends PassportStrategy(Strategy, 'JWT-1') {
   constructor(
     private configService: ConfigService,
     private readonly authService: AuthService,
-    @Inject(TokenBlacklist)
-    private readonly tokenBlacklistRepository: Repository<TokenBlacklist>,
+    @Inject(Expiry)
+    private readonly tokenBlacklistRepository: Repository<Expiry>,
     private readonly cryptomanager: CryptoManager,
   ) {
     super({
