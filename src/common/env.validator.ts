@@ -34,6 +34,8 @@ export enum EnvKey {
 
   ENCRYPTION_KEY = 'ENCRYPTION_KEY',
   ENCRYPTION_IV = 'ENCRYPTION_IV',
+
+  JWT_KEY = 'JWT_KEY',
 }
 
 class EnvironmentVariables {
@@ -71,6 +73,9 @@ class EnvironmentVariables {
   ENCRYPTION_KEY: string;
   @IsString()
   ENCRYPTION_IV: string;
+
+  @IsString()
+  JWT_KEY: string;
 }
 
 export function validate(config: Record<string, unknown>) {
