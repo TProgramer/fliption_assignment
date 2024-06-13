@@ -16,7 +16,7 @@ export const databaseProviders = [
         database: config.get(EnvKey.DB_DATABASE),
         username: config.get(EnvKey.DB_USER),
         password: config.get(EnvKey.DB_PASSWORD),
-        entities: [path.resolve(`${__dirname}/../../**/**.entity.ts`)],
+        entities: [path.resolve(`${__dirname}/../../**/**.entity.js`)],
         synchronize: config.get(EnvKey.DB_SYNC), // DB 테이블과 Entity 동기화 여부 (Prod 환경에서는 절대 사용 X)
         logging: config.get(EnvKey.DB_LOG),
       });
