@@ -111,4 +111,8 @@ export class UserService {
       },
     };
   }
+
+  getMyInfo(id: number) {
+    return `This action returns a #${id} user`;
+  }
 }

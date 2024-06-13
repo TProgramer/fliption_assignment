@@ -12,9 +12,10 @@ services:
       - 3000:3000
     volumes:
       - ../:/workspace
-      - /workspace/node_modules/
-      - /workspace/dist/
+      # - /workspace/node_modules/
+      # - /workspace/dist/
     environment:
+      - PNPM_HOME=/home/node/.local/share/pnpm
       - TZ=Asia/Seoul
       - LC_ALL:en_US.UTF-8
     command: sleep infinity
