@@ -24,6 +24,16 @@ export enum EnvKey {
   DB_DATABASE = 'DB_DATABASE',
   DB_SYNC = 'DB_SYNC',
   DB_LOG = 'DB_LOG',
+
+  AWS_HOST = 'AWS_HOST',
+  AWS_ACCESS_KEY_ID = 'AWS_ACCESS_KEY_ID',
+  AWS_SECRET_ACCESS_KEY = 'AWS_SECRET_ACCESS_KEY',
+  AWS_DEFAULT_REGION = 'AWS_DEFAULT_REGION',
+
+  AWS_KMS_KEY_ID = 'AWS_KMS_KEY_ID',
+
+  ENCRYPTION_KEY = 'ENCRYPTION_KEY',
+  ENCRYPTION_IV = 'ENCRYPTION_IV',
 }
 
 class EnvironmentVariables {
@@ -44,6 +54,23 @@ class EnvironmentVariables {
   DB_SYNC: boolean;
   @IsBoolean()
   DB_LOG: boolean;
+
+  @IsString()
+  AWS_ACCESS_KEY_ID: string;
+  @IsString()
+  AWS_HOST: string;
+  @IsString()
+  AWS_SECRET_ACCESS_KEY: string;
+  @IsString()
+  AWS_DEFAULT_REGION: string;
+
+  @IsString()
+  AWS_KMS_KEY_ID: string;
+
+  @IsString()
+  ENCRYPTION_KEY: string;
+  @IsString()
+  ENCRYPTION_IV: string;
 }
 
 export function validate(config: Record<string, unknown>) {
