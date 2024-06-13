@@ -10,6 +10,7 @@ import { User } from 'src/user/entities/user.entity';
 import { DataSource } from 'typeorm';
 import { Token } from 'src/user/entities/token.entity';
 import { Expiry } from 'src/user/entities/expiry.entity';
+import { DatabaseModule } from 'src/common/database/database.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { Expiry } from 'src/user/entities/expiry.entity';
       }),
     }),
     CryptoModule,
+    DatabaseModule,
   ],
   providers: [
     TokenCreator,
